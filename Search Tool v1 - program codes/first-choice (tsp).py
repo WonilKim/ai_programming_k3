@@ -19,7 +19,7 @@ def main():
 def createProblem():
     ## Read in a TSP (# of cities, locatioins) from a file.
     ## Then, create a problem instance and return it.
-    fileName = input("Enter the file name of a TSP: ")
+    fileName = "./Search Tool v1 - program codes/problem/" + input("Enter the file name of a TSP: ")
     infile = open(fileName, 'r')
     # First line is number of cities
     numCities = int(infile.readline())
@@ -34,6 +34,19 @@ def createProblem():
 
 
 def calcDistanceTable(numCities, locations): ###
+    table = []
+
+    for i in range(len(locations)):
+        x1, y1 = locations[i]
+
+        dist = []
+        for j in range(len(locations)):
+            x2, y2 = locations[j]
+
+            dist.append(math.sqrt(math.pow((x2 - x1), 2) + math.pow((y2 - y1), 2)))
+
+        table.append(dist)
+
     return table # A symmetric matrix of pairwise distances
 
 
@@ -63,6 +76,16 @@ def evaluate(current, p): ###
     ## Calculate the tour cost of 'current'
     ## 'p' is a Problem instance
     ## 'current' is a list of city ids
+    global NumEval
+    
+    NumEval += 1
+
+    numCities, locations, table = p
+
+    cost = 0
+    for i in range(len(current)):
+        cost += table[current[i]][current[(i + 1) % len(current)]]
+
     return cost
 
 
