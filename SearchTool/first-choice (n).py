@@ -27,7 +27,7 @@ def createProblem(): ###
     ## 'varNames' is a list of variable names.
     ## 'low' is a list of lower bounds of the varaibles.
     ## 'up' is a list of upper bounds of the varaibles.
-    filename = "./Search Tool v1 - program codes/problem/" + input("Enter the file name of function : ")
+    filename = "./SearchTool/problem/" + input("Enter the file name of function : ")
     infile = open(filename, 'r')
 
     expression = infile.readline()
