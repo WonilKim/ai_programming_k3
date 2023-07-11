@@ -438,7 +438,7 @@ if __name__ == '__main__':
 
     # testNumericSteepestAscent()
     # testNumericFirstChoice()
-    # testTspSteepestAscent()
-    testTspFirstChoice()
+    testTspSteepestAscent()
+    # testTspFirstChoice()
     
     pass
