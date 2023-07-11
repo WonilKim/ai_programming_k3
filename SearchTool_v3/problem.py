@@ -47,6 +47,17 @@ class NumericProblem(Problem):
         self._expression = ''
         self._domain = []
         self._delta = 0.01
+        self._alpha = 0.01
+        self._dx = 0.0001 # 10 ** (-4)
+
+    def getDelta(self):
+        return self._delta
+    
+    def getAlpha(self):
+        return self._alpha
+    
+    def getDx(self):
+        return self._dx
 
     def setVariables(self):
         filename = "./SearchTool/problem/" + input("Enter the file name of function : ")
@@ -72,6 +83,47 @@ class NumericProblem(Problem):
         self._domain = [varName, low, up]
 
 
+    def takeStep(self, x, v):       
+        xCopy = x[:]
+        grad = self.gradient(x, v)
+
+        # X <- X - alpha * Df(x)
+        for i in range(len(x)):
+            # Xi <- Xi - alpha * df / dXi
+            xCopy[i] = xCopy[i] - self._alpha * grad[i]
+
+        if self.isLegal(xCopy):
+            return xCopy
+        else:
+            return x
+        
+
+    def gradient(self, x, v):
+        grad = []
+
+        for i in range(len(x)):
+            xCopy = x[:]
+            # 벡터의 원소들 중 하나만 변경 
+            xCopy[i] += self._dx
+            # df / dXi = (f(x') - f(x)) / dx
+            grad.append((self.evaluate(xCopy) - v) / self._dx)
+
+        return grad
+
+    def isLegal(self, x):
+        domain = self._domain
+
+        for i in range(len(x)):
+
+            l = float(domain[1][i])     # Lower bound of i-th
+            u = float(domain[2][i])     # Upper bound of i-th
+            if l <= x[i] <= u:
+                continue
+            else:
+                return False
+            
+        return True
+    
     def randomInit(self): ###
         varName, low, up = self._domain
 
