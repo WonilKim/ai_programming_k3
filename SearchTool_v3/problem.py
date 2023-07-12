@@ -40,6 +40,7 @@ class Problem:
         print("Total number of evaluations: {0:,}".format(self._numEval))
 
 
+
 class NumericProblem(Problem):
 
     def __init__(self):
