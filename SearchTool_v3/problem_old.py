@@ -1,14 +1,12 @@
 import math
 import random
 import numpy as np
-from setup import Setup
 
-class Problem(Setup):
+class Problem:
 
     LIMIT_STUCK = 100
 
     def __init__(self):
-        Setup.__init__(self)
         self._solution = []
         self._value = 0.
         self._numEval = 0
@@ -49,9 +47,9 @@ class NumericProblem(Problem):
         Problem.__init__(self)
         self._expression = ''
         self._domain = []
-        # self._delta = 0.01
-        # self._alpha = 0.01
-        # self._dx = 0.0001 # 10 ** (-4)
+        self._delta = 0.01
+        self._alpha = 0.01
+        self._dx = 0.0001 # 10 ** (-4)
 
     def getDelta(self):
         return self._delta

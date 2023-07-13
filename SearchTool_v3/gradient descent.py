@@ -30,7 +30,7 @@ def createProblem(): ###
     ## 'low' is a list of lower bounds of the varaibles.
     ## 'up' is a list of upper bounds of the varaibles.
 
-    filename = "./Search Tool v1 - program codes/problem/" + input("Enter the file name of function : ")
+    filename = "./SearchTool/problem/" + input("Enter the file name of function : ")
     infile = open(filename, 'r')
 
     expression = infile.readline()
@@ -141,11 +141,11 @@ def describeProblem(p):
     for i in range(len(low)):
         print(" " + varNames[i] + ":", (low[i], up[i])) 
 
-def displaySetting():
+def displaySetting(p):
     print()
-    print("Search algorithm: Steepest-Ascent Hill Climbing")
+    print("Search algorithm: Gradient-descent Hill Climbing")
     print()
-    print("Mutation step size:", DELTA)
+    print("Step size:", p.getAlpha())
 
 def displayResult(solution, minimum):
     print()

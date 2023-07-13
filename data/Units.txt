@@ -1,0 +1,8 @@
+1 inch = .083333 foot
+1 yard = 3 feet
+1 meter = 3.28155 feet
+1 fathom = 6 feet
+1 rod = 16.5 feet
+1 furlong = 660 feet
+1 kilometer = 3281.5 feet
+1 mile = 5280 feet
