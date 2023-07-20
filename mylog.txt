@@ -1,0 +1,2 @@
+INFO:root:x = 2.0, y = 5.0, result = 30.0
+INFO:root:x = 7.0, y = 3.0, result = -1.9000000000000004
